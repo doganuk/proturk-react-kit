@@ -2,9 +2,13 @@ function Tab({ children }) {
 
 
     return (
-        <>
-            {children}
-        </>
+        <nav>
+               {children.map((item,index)=> <p key={index}>{item.props.title}</p>)}
+               <hr/>
+               {children.map((item,index)=> <p key={index}>{item.props.children}</p>)}
+               <hr/>
+               {children.map((item,index)=> <p key={index}>{item}</p>)}
+        </nav>
     );
 }
 
