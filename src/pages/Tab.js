@@ -1,22 +1,13 @@
 
 import {useEffect, useState} from "react"  
 
-function Tab({ children, activeTab }) {
-    const [active, setActive] = useState(activeTab);
-    //console.log('render oldu')
-    useEffect(()=>
-        setActive(activeTab)
-    ,[activeTab])
-
-    useEffect(()=>
-        console.log(active)
-    ,[active])
+function Tab({ children, activeTab,setActiveTab }) {
 
     return (
         <>
         <nav>
             {children.map((item, index) =>
-                <div key={index} onClick={() => setActive(index)} className={active == index ? 'blue' : 'white'}>
+                <div key={index} onClick={() => setActiveTab(index)} className={activeTab == index ? 'blue' : 'white'}>
                     {item}
                 </div>)
             }
@@ -29,7 +20,7 @@ function Tab({ children, activeTab }) {
 
         </nav>
 
-        {children[active]}  
+        {children[activeTab]}  
         </>
     );
 }
