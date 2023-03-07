@@ -1,13 +1,21 @@
 
 import {useEffect, useState} from "react"  
 
-function Tab({ children, activeTab,setActiveTab }) {
+function Tab({ children, activeTab,onChange }) {
+
+    const [active,setActive] = useState(1);
+
+    console.log('calisti');
+    
+    useEffect(()=>
+    onChange(active)
+    ,[active]);
 
     return (
         <>
         <nav>
             {children.map((item, index) =>
-                <div key={index} onClick={() => setActiveTab(index)} className={activeTab == index ? 'blue' : 'white'}>
+                <div key={index} onClick={() => setActive(index)} className={activeTab == index ? 'blue' : 'white'}>
                     {item}
                 </div>)
             }
